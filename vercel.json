@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "public": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "build/web/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
