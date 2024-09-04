@@ -3,11 +3,8 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:testingapp/beamer_location.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 void main() {
-  setPathUrlStrategy(); // Removes the hash from URLs
-
   final routerDelegate = BeamerDelegate(
     locationBuilder: (state, _) => getLocation(state, _),
   );
