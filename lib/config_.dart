@@ -10,25 +10,25 @@ void configureApp() {
 class CustomUrlStrategy extends UrlStrategy {
   @override
   String getPath() {
-    // Custom logic to get the current path
-    return (window.location.pathname ?? "").split("#").join();
+    // Returning the current path without any # symbol
+    return window.location.pathname ?? ""; // No need to check for #
   }
 
   @override
   String prepareExternalUrl(String internalUrl) {
-    // Custom logic for preparing the external URL
+    // Clean URL without adding any # symbols
     return internalUrl;
   }
 
   @override
   void pushState(dynamic state, String title, String url) {
-    // Custom logic for pushState
+    // Push new state without # symbol in the URL
     window.history.pushState(state, title, url);
   }
 
   @override
   void replaceState(dynamic state, String title, String url) {
-    // Custom logic for replaceState
+    // Replace the current state without # symbol
     window.history.replaceState(state, title, url);
   }
 
@@ -38,19 +38,20 @@ class CustomUrlStrategy extends UrlStrategy {
       fn((event as PopStateEvent).state);
     }
 
+    // Listen for the popstate event to handle browser navigation
     window.addEventListener('popstate', wrappedFn);
     return () => window.removeEventListener('popstate', wrappedFn);
   }
 
   @override
   Object? getState() {
-    // Implement getState
+    // Return the current state from the window's history
     return window.history.state;
   }
 
   @override
   Future<void> go(int count) async {
-    // Implement go
+    // Navigate the history by 'count' steps
     window.history.go(count);
   }
 }
