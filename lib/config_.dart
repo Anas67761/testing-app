@@ -11,7 +11,7 @@ class CustomUrlStrategy extends UrlStrategy {
   @override
   String getPath() {
     // Custom logic to get the current path
-    return window.location.pathname ?? '';
+    return (window.location.pathname ?? "").split("#").join();
   }
 
   @override
