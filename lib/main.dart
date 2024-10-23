@@ -3,8 +3,10 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:testingapp/beamer_location.dart';
+import 'package:testingapp/config_.dart';
 
 void main() {
+  configureApp();
   final routerDelegate = BeamerDelegate(
     locationBuilder: (state, _) => getLocation(state, _),
   );
